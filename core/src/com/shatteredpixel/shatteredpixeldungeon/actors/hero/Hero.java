@@ -1215,7 +1215,8 @@ public class Hero extends Char {
 		}
 		
 		if (levelUp) {
-			
+			this.STR++;
+
 			GLog.p( Messages.get(this, "new_level"), lvl );
 			sprite.showStatus( CharSprite.POSITIVE, Messages.get(Hero.class, "level_up") );
 			Sample.INSTANCE.play( Assets.SND_LEVELUP );
@@ -1320,8 +1321,8 @@ public class Hero extends Char {
 			reallyDie( cause );
 			
 		} else {
-			
-			Dungeon.deleteGame( GamesInProgress.curSlot, false );
+
+			// Dungeon.deleteGame( GamesInProgress.curSlot, false );
 			GameScene.show( new WndResurrect( ankh, cause ) );
 			
 		}
@@ -1381,8 +1382,8 @@ public class Hero extends Char {
 		if (cause instanceof Hero.Doom) {
 			((Hero.Doom)cause).onDeath();
 		}
-		
-		Dungeon.deleteGame( GamesInProgress.curSlot, true );
+
+		// Dungeon.deleteGame( GamesInProgress.curSlot, true );
 	}
 
 	//effectively cache this buff to prevent having to call buff(Berserk.class) a bunch.
